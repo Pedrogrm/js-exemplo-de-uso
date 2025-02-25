@@ -28,12 +28,13 @@
       height: 200px; /* Altura fixa */
       border: 2px solid black;
       border-radius: 10px; /* Borda arredondada */
-      transition: transform 0.3s ease; /* Efeito de transição suave */
+      transition: transform 0.3s ease, box-shadow 0.3s ease-in-out; /* Efeito de transição suave */
     }
 
     /* Efeito de escala ao passar o mouse */
     img:hover {
-      transform: scale(1.05); /* Aumenta ligeiramente o tamanho */
+      transform: scale(1.05);/* Aumenta ligeiramente o tamanho */
+      box-shadow: 10px 10px 30px rgba(0, 0, 0.5, 0.5); 
     }
 
     /* Estilo do texto principal */
@@ -50,28 +51,50 @@
       font-size: 1.2em;
       color: #555;
     }
+
+    .negrito {
+      margin-top: 20px;
+      font-size: 25px;
+    }
+
+    #texto{
+      transition: transform 0.3s ease
+    }
+
+    #texto:hover {
+        transform: scale(1.05);/* Aumenta ligeiramente o tamanho */
+    }
+  
   </style>
 </head>
+<!DOCTYPE html>
+
 <body>
-  <!-- Contêiner para a imagem e o texto -->
-  <div class="image-container">
-    <!-- Imagem que será alterada -->
-    <img id="myImage" src="image.png" alt="Imagem 1">
+  <!-- Imagem que será trocada ao passar o mouse -->
+  <img id="imagem" src="image.png" alt="Imagem Original" width="300">
 
-    <!-- Texto principal que será modificado -->
-    <p id="myText">Passe o mouse sobre a imagem</p>
+  <!-- Texto abaixo da imagem -->
+  <b class="negrito">Passe o mouse sobre a imagem</b>
+  <p id="texto">Sabrina carpenter - Linda</p>
 
-    <!-- Texto adicional -->
-    <p class="subtext" id="subText">Sabrina Carpenter - Linda!</p>
-  </div>
-
-  <!-- Script JavaScript embutido na página -->
   <script>
+    // Seleciona a imagem e o parágrafo pelo ID
+    const imagem = document.querySelector('#imagem');
+    const texto = document.querySelector('#texto');
 
+    // Adiciona um evento de mouseover à imagem
+    imagem.addEventListener('mouseover', function() {
+      // Altera a imagem e o texto
+      imagem.src = 'image2.png';
+      texto.textContent = 'Doja cat - Linda';
+    });
 
-    // 1ª Digitação (Resolva aqui o exercício)
-
-
+    // Adiciona um evento de mouseout à imagem
+    imagem.addEventListener('mouseout', function() {
+      // Restaura a imagem e o texto originais
+      imagem.src = 'image.png';
+      texto.textContent = 'Sabrina carpenter - Linda';
+    });
   </script>
 </body>
 </html>
